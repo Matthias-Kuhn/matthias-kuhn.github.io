@@ -5,19 +5,22 @@ body {
   color: white;
   font-family: sans-serif;
 }
+
 .logo_row {
   display: flex;
   justify-content: center;
 }
+
 #logo {
   margin-top: 10px;
   width: 50px;
 }
+
 .film_select {
   margin: 10px 50px;
-
   text-align: center;
 }
+
 input {
   width: 100%;
   box-sizing: border-box;
@@ -28,21 +31,33 @@ input {
   border-color: #00000000;
   font-size: 1em;
 }
+
 button {
   background: #e50913;
   color: white;
   border: none;
   padding: 10px;
-  width: 150px;
+  width: calc(100% - 100px);
+  margin: 100px 50px;
   border-radius: 5px;
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
+  right: 0px;
 }
 
 button:hover {
   background-color: #b1060f;
   cursor: pointer;
+}
 
+p {
+  color: #ffffff55;
+  margin: 10px 50px;
+  text-align: justify;
+}
+
+@media only screen and (min-width: 800px) {
+  .container {
+    width: 800px;
+    margin: 0 auto;
+  }
 
 }

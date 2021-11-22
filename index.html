@@ -5,22 +5,30 @@
     <title>Film Finder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="ffscript.js"></script>
   </head>
   <body>
-    <div class="logo_row">
-      <img id="logo" src="filmfinder.png" alt="filmfinder icon">
+    <div class="container">
+      <div class="logo_row">
+        <img id="logo" src="filmfinder.png" alt="filmfinder icon">
+      </div>
+
+      <div class="film_select">
+        <h2>Person A:</h2>
+        <h4>Bitte wähle deine Filme:</h4>
+        <input type="text" name="film1" value="">
+        <input type="text" name="film2" value="">
+        <input type="text" name="film3" value="">
+        <input type="text" name="film4" value="">
+        <input type="text" name="film5" value="">
+      </div>
+      <button type="button" name="btn_weiter" onclick="BtnClick();">Weiter</button>
+      <p>Film Finder ist ein Ranking-Programm, um zwei Personen die Auswahl eines
+      Filmes zu vereinfachen. Dabei wählt jeder bis zu 5 Filme und erstellt eine
+      Rangfolge für diese. Anschließend erstellt man eine Rangfolge für die Filme
+      vom anderen. Das Programm sucht dann den am besten bewerteten Film aus.</p>
     </div>
 
-    <div class="film_select">
-      <h2>Person A:</h2>
-      <h4>Bitte wähle deine Filme:</h4>
-      <input type="text" name="film1" value="">
-      <input type="text" name="film1" value="">
-      <input type="text" name="film1" value="">
-      <input type="text" name="film1" value="">
-      <input type="text" name="film1" value="">
-    </div>
-    <button type="button" name="btn_weiter">Weiter</button>
 
 
   </body>
