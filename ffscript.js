@@ -4,6 +4,8 @@ const FlowEnum = Object.freeze({
   "REARRANGE_A": 2,
   "INPUT_B": 3,
   "REARRANGE_B": 4,
+  "REARRANGE_AFORB": 7,
+  "REARRANGE_BFORA": 8,
   "RESULT": 5
 })
 var moviesOfA = ["", "", "", "", ""];
@@ -38,6 +40,12 @@ function nextStep() {
       currentStep = FlowEnum.REARRANGE_B;
       break;
     case FlowEnum.REARRANGE_B:
+      currentStep = FlowEnum.REARRANGE_BFORA;
+      break;
+    case FlowEnum.REARRANGE_BFORA:
+      currentStep = FlowEnum.REARRANGE_AFORB;
+      break;
+    case FlowEnum.REARRANGE_AFORB:
       currentStep = FlowEnum.RESULT;
       break;
   }
@@ -59,10 +67,16 @@ function updateLayout() {
       for (var i = 0; i < 5; i++) {
         films[i].value = "";
       }
-      document.getElementById("input_header").innerHTML="Person B:";
+      document.getElementById("input_header").innerHTML = "Person B:";
       document.getElementById("replace_box").innerHTML = document.getElementById('input_box').innerHTML;
       break;
     case FlowEnum.REARRANGE_B:
+      document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
+      break;
+    case FlowEnum.REARRANGE_BFORA:
+      document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
+      break;
+    case FlowEnum.REARRANGE_AFORB:
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
       break;
     case FlowEnum.RESULT:
