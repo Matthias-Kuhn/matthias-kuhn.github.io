@@ -144,7 +144,7 @@ function updateLayout() {
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
       break;
     case FlowEnum.RESULT:
-
+      document.getElementById('result').appendChild(createResultUl());
       document.getElementById("replace_box").innerHTML = document.getElementById('result').innerHTML;
       document.getElementById("button_box").innerHTML = "";
       document.getElementById("result_txt").innerHTML = movies[0].name;
@@ -185,4 +185,15 @@ function compareMovies(a, b) {
     return -1;
   }
   return 0;
+}
+
+function createResultUl(){
+  var list = document.createElement('ul');
+
+  for (var i = 0; i < 10; i++) {
+    var item = document.createElement('li');
+    item.appendChild(document.createTextNode(movies[i].name + "    ("+movies[i].points +" Punkte)"));
+    list.appendChild(item);
+  }
+  return list;
 }
