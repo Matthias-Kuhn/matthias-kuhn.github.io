@@ -12,18 +12,9 @@ const FlowEnum = Object.freeze({
 var WEIGHT_OWN = 1.0;
 var WEIGHT_OTHER = 1.5;
 
-var moviesOfA = ["", "", "", "", ""];
-var moviesOfB = ["", "", "", "", ""];
-
-var rankingMoviesOfA = [0,0,0,0,0];
-var rankingMoviesOfB = [0,0,0,0,0];
-
-var rankingAforA = [0,0,0,0,0];
-var rankingAforB = [0,0,0,0,0];
-
-var rankingBforB = [0,0,0,0,0];
-var rankingBforA = [0,0,0,0,0];
-
+var moviesOfA = new Array(5);
+var moviesOfB = new Array(5);
+var movies = new Array(10);
 
 // initial element
 var currentStep = FlowEnum.START;
@@ -105,14 +96,15 @@ function updateLayout() {
 
 }
 
+
 function calculateMovie() {
   for (var i = 0; i < 5; i++) {
-    rankingMoviesOfA = rankingAforA * WEIGHT_OWN + rankingBforA * WEIGHT_OTHER;
-    rankingMoviesOfB = rankingBforB * WEIGHT_OWN + rankingAforB * WEIGHT_OTHER;
-    // TODO: Last decider gets disadvantage
+    moviesOfA[i].calc();
+    moviesOfB[i].calc();
+    movies.push(moviesOfA[i]);
+    movies.push(moviesOfB[i]);
   }
-
-
+  movies.sort(compareMovies);
 }
 
 class Movie {
@@ -122,4 +114,17 @@ class Movie {
     this.rankOfOther = 0;
     this.points = 0;
   }
+  function calc() {
+    this.points = this.rankOfOwner * WEIGHT_OWN + this.rankOfOther * WEIGHT_OTHER;
+  }
+}
+
+function compareMovies(a, b) {
+  if (a.points < b.points) {
+    return -1;
+  }
+  if (a.points > b.points) {
+    return 1;
+  }
+  return 0;
 }
