@@ -137,12 +137,15 @@ function updateLayout() {
       break;
     case FlowEnum.REARRANGE_B:
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
+      enableDragAndDrop();
       break;
     case FlowEnum.REARRANGE_BFORA:
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
+      enableDragAndDrop();
       break;
     case FlowEnum.REARRANGE_AFORB:
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
+      enableDragAndDrop();
       break;
     case FlowEnum.RESULT:
       document.getElementById('result').appendChild(createResultUl());

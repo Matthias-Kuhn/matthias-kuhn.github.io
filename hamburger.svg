@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64.448776mm"
+   height="64.449295mm"
+   viewBox="0 0 64.448776 64.449295"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="hamburger.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.89085297"
+     inkscape:cx="143.68252"
+     inkscape:cy="205.98236"
+     inkscape:window-width="1920"
+     inkscape:window-height="1046"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-55.539245,-72.170787)">
+    <path
+       id="rect846"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:26.3244;stroke-linecap:round;paint-order:stroke fill markers"
+       d="m 209.91211,272.77148 v 37.47657 h 243.58594 v -37.47657 z m 0,103.05664 v 37.47461 h 243.58594 v -37.47461 z m 0,103.05665 v 37.47461 h 243.58594 v -37.47461 z"
+       transform="scale(0.26458333)" />
+  </g>
+</svg>

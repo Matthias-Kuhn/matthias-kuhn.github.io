@@ -64,12 +64,43 @@ p {
   background: white;
   border-radius: 5px;
   margin-top: 15px;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+
 }
 
-.drag_item span{
+.drag_item span {
   color: black;
   height: 100%;
+  line-height: 30px;
+  padding-left: 20px;
+
+  vertical-align: center;
+  display: inline-block;
+  margin: 0;
+
+
 }
+
+h2{
+  text-align: center;
+}
+
+h4{
+  text-align: center;
+}
+
+.drag_burger {
+  width: 15px;
+  height: 15px;
+  padding: 7.5px;
+
+
+  right: 0px;
+}
+
 
 @media only screen and (min-width: 800px) {
   .container {
