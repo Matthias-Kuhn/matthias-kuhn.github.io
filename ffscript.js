@@ -124,6 +124,7 @@ function updateLayout() {
       break;
     case FlowEnum.REARRANGE_A:
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
+      enableDragAndDrop();
       break;
     case FlowEnum.INPUT_B:
 

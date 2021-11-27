@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="main.css">
   <script type="text/javascript" src="ffscript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" integrity="sha512-zYXldzJsDrNKV+odAwFYiDXV2Cy37cwizT+NkuiPGsa9X1dOz04eHvUWVuxaJ299GvcJT31ug2zO4itXBjFx4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -16,6 +17,7 @@
     </div>
 
     <div id="replace_box">
+
 
     </div>
     <div id="input_box" style="display:none">
@@ -30,7 +32,23 @@
       </div>
     </div>
     <div id="rearrange" style="display:none">
-      <h1>SORT HERE</h1>
+      <h1>SORT HERE 1</h1>
+
+      <div id="drag_area">
+        <div class="drag_item">
+          <span class="drag_item">DragHere</span>
+
+        </div>
+        <div class="drag_item">
+          <span class="drag_item">DragHere</span>
+        </div>
+        <div class="drag_item">
+          <span class="drag_item">DragHere</span>
+        </div>
+      </div>
+
+
+
 
     </div>
     <div id="result" style="display:none">
@@ -42,8 +60,20 @@
     <p>Film Finder ist ein Ranking-Programm, um zwei Personen die Auswahl eines
       Filmes zu vereinfachen. Dabei wählt jeder bis zu 5 Filme und erstellt eine
       Rangfolge für diese. Anschließend erstellt man eine Rangfolge für die Filme
-      vom anderen. Das Programm sucht dann den am besten bewerteten Film aus.</p>
+      vom anderen. Das Programm sucht dann den am besten bewerteten Film aus. Wer
+      zuletzt den Film bestimmt hat, ist Person B!</p>
+    <p><i>Version 0.8</i></p>
   </div>
+
+  <script>
+    function enableDragAndDrop() {
+      const dragArea = document.getElementById("drag_area");
+      new Sortable(dragArea, {
+        animation: 350
+      });
+    }
+
+  </script>
 </body>
 
 </html>
