@@ -20,6 +20,7 @@ var movies = new Array(10);
 var currentStep = FlowEnum.START;
 
 function BtnClick() {
+
   // get movies from input fields
   //var films = document.getElementsByTagName("input");
   //for (var i = 0; i < 5; i++) {
@@ -123,6 +124,7 @@ function updateLayout() {
       document.getElementById("btn_weiter").innerHTML = "Weiter";
       break;
     case FlowEnum.REARRANGE_A:
+      fillRearrangeList();
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
       enableDragAndDrop();
       break;
@@ -136,15 +138,24 @@ function updateLayout() {
       document.getElementById("replace_box").innerHTML = document.getElementById('input_box').innerHTML;
       break;
     case FlowEnum.REARRANGE_B:
+
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
+      document.getElementById("rearrange_header").innerHTML = "Person B:"
+      fillRearrangeList();
       enableDragAndDrop();
       break;
     case FlowEnum.REARRANGE_BFORA:
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
+      document.getElementById("rearrange_header").innerHTML = "Person B:"
+      fillRearrangeList();
       enableDragAndDrop();
       break;
     case FlowEnum.REARRANGE_AFORB:
+
+
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
+      fillRearrangeList();
+      document.getElementById("rearrange_header").innerHTML = "Person A:"
       enableDragAndDrop();
       break;
     case FlowEnum.RESULT:
@@ -191,13 +202,35 @@ function compareMovies(a, b) {
   return 0;
 }
 
-function createResultUl(){
+function createResultUl() {
   var list = document.createElement('ul');
 
   for (var i = 0; i < 10; i++) {
     var item = document.createElement('li');
-    item.appendChild(document.createTextNode(movies[i].name + "    ("+movies[i].points +" Punkte)"));
+    item.appendChild(document.createTextNode(movies[i].name + "    (" + movies[i].points + " Punkte)"));
     list.appendChild(item);
   }
   return list;
+}
+
+function fillRearrangeList() {
+  var movieList;
+  switch (currentStep) {
+    case FlowEnum.REARRANGE_A:
+      movieList = moviesOfA;
+      break;
+    case FlowEnum.REARRANGE_B:
+      movieList = moviesOfB;
+      break;
+    case FlowEnum.REARRANGE_BFORA:
+      movieList = moviesOfA;
+      break;
+    case FlowEnum.REARRANGE_AFORB:
+      movieList = moviesOfB;
+      break;
+  }
+  var items = document.getElementsByClassName("drag_item_inner");
+  for (var i = 0; i < 5; i++) {
+    items[i].innerHTML = movieList[i].name;
+  }
 }
