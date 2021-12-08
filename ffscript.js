@@ -37,12 +37,7 @@ function BtnClick() {
       }
       break;
     case FlowEnum.REARRANGE_A:
-      // test ranking
-      moviesOfA[0].rankOfOwner = 4;
-      moviesOfA[1].rankOfOwner = 3;
-      moviesOfA[2].rankOfOwner = 2;
-      moviesOfA[3].rankOfOwner = 1;
-      moviesOfA[4].rankOfOwner = 0;
+      getVoting();
 
       break;
     case FlowEnum.INPUT_B:
@@ -53,30 +48,15 @@ function BtnClick() {
       }
       break;
     case FlowEnum.REARRANGE_B:
-      // test ranking
-      moviesOfB[0].rankOfOwner = 4;
-      moviesOfB[1].rankOfOwner = 3;
-      moviesOfB[2].rankOfOwner = 2;
-      moviesOfB[3].rankOfOwner = 1;
-      moviesOfB[4].rankOfOwner = 0;
+      getVoting();
 
       break;
     case FlowEnum.REARRANGE_BFORA:
-      // test ranking
-      moviesOfA[0].rankOfOther = 4;
-      moviesOfA[1].rankOfOther = 3;
-      moviesOfA[2].rankOfOther = 2;
-      moviesOfA[3].rankOfOther = 1;
-      moviesOfA[4].rankOfOther = 0;
+      getVoting();
 
       break;
     case FlowEnum.REARRANGE_AFORB:
-      // test ranking
-      moviesOfB[0].rankOfOther = 4;
-      moviesOfB[1].rankOfOther = 3;
-      moviesOfB[2].rankOfOther = 2;
-      moviesOfB[3].rankOfOther = 1;
-      moviesOfB[4].rankOfOther = 0;
+      getVoting();
 
       calculateMovie();
 
@@ -138,7 +118,6 @@ function updateLayout() {
       document.getElementById("replace_box").innerHTML = document.getElementById('input_box').innerHTML;
       break;
     case FlowEnum.REARRANGE_B:
-
       document.getElementById("replace_box").innerHTML = document.getElementById('rearrange').innerHTML;
       document.getElementById("rearrange_header").innerHTML = "Person B:"
       fillRearrangeList();
@@ -174,7 +153,11 @@ function calculateMovie() {
   for (var i = 0; i < 5; i++) {
     moviesOfA[i].calculateRank();
     moviesOfB[i].calculateRank();
+  }
+  for (var i = 0; i < 5; i++) {
     movies.push(moviesOfA[i]);
+  }
+  for (var i = 0; i < 5; i++) {
     movies.push(moviesOfB[i]);
   }
   movies.sort(compareMovies);
@@ -232,5 +215,61 @@ function fillRearrangeList() {
   var items = document.getElementsByClassName("drag_item_inner");
   for (var i = 0; i < 5; i++) {
     items[i].innerHTML = movieList[i].name;
+  }
+}
+
+function getVoting() {
+  var items = document.getElementsByClassName("drag_item_inner");
+
+
+  switch (currentStep) {
+    case FlowEnum.REARRANGE_A:
+      for (var i = 0; i < 5; i++) {
+        for (var j = 0; j < 5; j++) {
+          if (moviesOfA[j].name == items[i].innerHTML) {
+            moviesOfA[j].rankOfOwner = 5 - i;
+            break;
+          }
+        }
+
+      }
+
+      break;
+    case FlowEnum.REARRANGE_B:
+      for (var i = 0; i < 5; i++) {
+        for (var j = 0; j < 5; j++) {
+          if (moviesOfB[j].name == items[i].innerHTML) {
+            moviesOfB[j].rankOfOwner = 5 - i;
+            break;
+          }
+        }
+
+      }
+
+      break;
+    case FlowEnum.REARRANGE_BFORA:
+      for (var i = 0; i < 5; i++) {
+        for (var j = 0; j < 5; j++) {
+          if (moviesOfA[j].name == items[i].innerHTML) {
+            moviesOfA[j].rankOfOther = 5 - i;
+            break;
+          }
+        }
+
+      }
+
+      break;
+    case FlowEnum.REARRANGE_AFORB:
+      for (var i = 0; i < 5; i++) {
+        for (var j = 0; j < 5; j++) {
+          if (moviesOfB[j].name == items[i].innerHTML) {
+            moviesOfB[j].rankOfOther = 5 - i;
+            break;
+          }
+        }
+
+      }
+
+      break;
   }
 }
