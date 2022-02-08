@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Film Finder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <script type="text/javascript" src="ffscript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" integrity="sha512-zYXldzJsDrNKV+odAwFYiDXV2Cy37cwizT+NkuiPGsa9X1dOz04eHvUWVuxaJ299GvcJT31ug2zO4itXBjFx4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo_row">
+      <img id="logo" src="filmfinder.png" alt="filmfinder icon">
+    </div>
+
+    <div id="replace_box">
+
+
+    </div>
+    <div id="input_box" style="display:none">
+      <div class="film_select">
+        <h2 id="input_header">Person A:</h2>
+        <h4>Bitte wähle deine Filme:</h4>
+        <input type="text" name="film1" value="">
+        <input type="text" name="film2" value="">
+        <input type="text" name="film3" value="">
+        <input type="text" name="film4" value="">
+        <input type="text" name="film5" value="">
+      </div>
+    </div>
+    <div id="rearrange" style="display:none">
+      <h2 id="rearrange_header">Person A:</h2>
+      <h4>Bitte ranke folgende Filme: (oben ist besser)</h4>
+
+      <div id="drag_area">
+        <div class="drag_item">
+          <span class="drag_item_inner">DragHere</span>
+          <img class="drag_burger" src="hamburger.svg" alt="">
+
+        </div>
+        <div class="drag_item">
+          <span class="drag_item_inner">DragHere</span>
+          <img class="drag_burger" src="hamburger.svg" alt="">
+        </div>
+        <div class="drag_item">
+          <span class="drag_item_inner">DragHere</span>
+          <img class="drag_burger" src="hamburger.svg" alt="">
+        </div>
+        <div class="drag_item">
+          <span class="drag_item_inner">DragHere</span>
+          <img class="drag_burger" src="hamburger.svg" alt="">
+        </div>
+        <div class="drag_item">
+          <span class="drag_item_inner">DragHere</span>
+          <img class="drag_burger" src="hamburger.svg" alt="">
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <div id="result" style="display:none">
+      So habt ihr entschieden:
+    </div>
+    <div id="button_box">
+      <button type="button" id="btn_weiter" name="btn_weiter" onclick="BtnClick();">Findet euren Film</button>
+    </div>
+    <p>Film Finder ist ein Ranking-Programm, um zwei Personen die Auswahl eines
+      Filmes zu vereinfachen. Dabei wählt jeder bis zu 5 Filme und erstellt eine
+      Rangfolge für diese. Anschließend erstellt man eine Rangfolge für die Filme
+      vom anderen. Das Programm sucht dann den am besten bewerteten Film aus. Wer
+      zuletzt den Film bestimmt hat, ist Person B!</p>
+    <p><i>Version 1.0</i></p>
+  </div>
+
+  <script>
+    function enableDragAndDrop() {
+      const dragArea = document.getElementById("drag_area");
+      new Sortable(dragArea, {
+        animation: 350
+      });
+    }
+
+  </script>
+</body>
+
+</html>
