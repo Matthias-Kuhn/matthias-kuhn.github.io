@@ -34,3 +34,13 @@ p {
 .click-box img {
     width: 100%;
 }
+
+.marker {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: red;
+    position: relative;
+    top: 200px;
+    left: 100px;
+}
