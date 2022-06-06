@@ -17,3 +17,17 @@ function imageClick(event) {
 //document.addEventListener("click", printMousePos);
 
 document.querySelector('#click-box').addEventListener('click', imageClick)
+
+function nextCity() {
+    var name = "Münster";
+    var let = 51961563;
+    var long = 7628202;
+}
+
+function getXCoordinate(long, let) {
+
+}
+
+function getYCoordinate(long, let) {
+    
+}
