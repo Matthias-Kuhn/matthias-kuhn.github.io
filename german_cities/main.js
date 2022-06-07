@@ -10,13 +10,12 @@ function imageClick(event) {
     var y = event.clientY - element.offsetTop;
     //alert(x+', '+y)
     let marker = document.getElementById('marker-1');
+    marker.style.visibility = "visible"
     marker.style.top = y-5 + "px";
     marker.style.left = x-5 + "px";
 
-    setResultMarker(51961563,7628202);
+    setResultMarker(52520008,13404954);
 }
-
-//document.addEventListener("click", printMousePos);
 
 document.querySelector('#click-box').addEventListener('click', imageClick)
 

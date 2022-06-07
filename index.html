@@ -3,19 +3,31 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Main</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <title>Wo liegt..?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="german_cities/main.css">
   </head>
 
 <body>
   <div class="content">
-    <p>Wo liegt diese Stadt?</p>
-    <p id="city-name">Münster</p>
-    <div class="click-box" id="click-box">
-      <div class="marker" id="marker-1"></div>
-      <div class="marker" id="marker-2"></div>
-      <img src="german_cities/germany_borders.png">
+    <div class="header">
+      <p>Wo liegt nochmal...</p>
+      <p id="round">1/5</p>
+      <p id="city-name">Münster</p>
+    </div>
+    <div class="main-area">
+      <div class="click-box" id="click-box">
+        <div class="marker" id="marker-1"></div>
+        <div class="marker" id="marker-2"></div>
+        <img src="german_cities/germany_borders.png" draggable="false">
+      </div>
+    </div> 
+    <div class="btn-area">
+      <div id="btn">ABSCHICKEN</div>
+
     </div>
   </div>
   
