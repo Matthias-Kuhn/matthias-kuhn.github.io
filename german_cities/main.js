@@ -1,3 +1,6 @@
+import {getNextCity} from '/german_cities/cities.js'
+
+
 function printMousePos(event) {
     document.body.textContent =
       "clientX: " + event.clientX +
@@ -5,6 +8,7 @@ function printMousePos(event) {
 }
 
 function imageClick(event) {
+    console.log(getNextCity());
     let element = document.getElementById('click-box');
     var x = event.clientX - element.offsetLeft;
     var y = event.clientY - element.offsetTop;
