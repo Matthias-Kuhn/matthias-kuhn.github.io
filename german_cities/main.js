@@ -12,6 +12,8 @@ function imageClick(event) {
     let marker = document.getElementById('marker-1');
     marker.style.top = y-5 + "px";
     marker.style.left = x-5 + "px";
+
+    setResultMarker(51961563,7628202);
 }
 
 //document.addEventListener("click", printMousePos);
@@ -20,14 +22,44 @@ document.querySelector('#click-box').addEventListener('click', imageClick)
 
 function nextCity() {
     var name = "Münster";
-    var let = 51961563;
-    var long = 7628202;
+    var latitude = 51961563;
+    var longitude = 7628202;
 }
 
-function getXCoordinate(long, let) {
+function setResultMarker(longitude, latitude) {
+    let marker = document.getElementById('marker-2');
+    let offset = 2* Math.sqrt(8);
 
+    var x = getXCoordinate(longitude, latitude);
+    var y = getYCoordinate(longitude);
+
+    marker.style.top = y-offset + "px";
+    marker.style.left = x-offset + "px";
 }
 
-function getYCoordinate(long, let) {
-    
+function getXCoordinate(longitude, latitude) {
+    let f_longitude = parseFloat(longitude) / 1000000;
+    let f_latitude = parseFloat(latitude) / 1000000;
+    let moved_pos = (f_latitude - 10.0) * Math.cos(f_longitude * Math.PI / 180.0) * 93.37 * getScaleRatio();
+    return moved_pos + 257.25 * getScaleRatio();
+}
+
+function getYCoordinate(longitude) {
+    var f_longitude = parseFloat(longitude) / 1000000;
+    console.log((55.477-f_longitude) * 24.7 * getScaleRatio())
+    return (55.477-f_longitude) * 93.37 * getScaleRatio();
+}
+
+function getScaleRatio() {
+    let element = document.getElementById('click-box');
+    let width = element.offsetWidth;
+    let height = element.offsetHeight;
+
+    if (width < height * 0.6983) {
+        // takes width for image
+        console.log("used width");
+        return width / 567.0;
+    } 
+    // takes height for image
+    return height / 812.0;
 }
