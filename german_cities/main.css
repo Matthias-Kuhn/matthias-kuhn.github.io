@@ -127,6 +127,49 @@ p {
     border-radius: 0px;
 }
 
+#result-popup {
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    filter: drop-shadow(0px 3px 10px black);
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100px,-100px);
+    padding: 10px;
+    visibility: hidden;
+}
+
+#stars {
+    width: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: blue;
+}
+
+
+.star {
+    float: left;
+    width: 30px;
+    height: 30px;
+    background-image: url('star.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+}
+
+#star5 {
+    margin-right: 0px;
+}
+
+#result-msg {
+    text-align: center;
+    float: none;
+    margin-bottom: 50px;
+}
+
 @media only screen and (min-width: 700px) {
     .content {
         width: 700px;

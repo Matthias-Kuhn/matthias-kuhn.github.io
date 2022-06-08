@@ -13,14 +13,16 @@ var round = 1;
 var km_off = 0;
 
 var search_mode = true;
-var guessed = true;
+var result_shown = false;
+var guessed = false; 
 
 document.addEventListener('DOMContentLoaded', function() {
     nextCity();
 }, false);
 
 function imageClick(event) {
-    if (!search_mode) return
+    if (result_shown) return;
+    if (!search_mode) return;
     guessed = true;
     let element = document.getElementById('click-box');
     clickX = event.clientX - element.offsetLeft;
@@ -30,7 +32,6 @@ function imageClick(event) {
     marker.style.visibility = "visible"
     marker.style.top = clickY-5 + "px";
     marker.style.left = clickX-5 + "px";
-
     getDistance();
     
 }
@@ -39,23 +40,34 @@ document.querySelector('#click-box').addEventListener('click', imageClick)
 document.querySelector('#btn').addEventListener('click', sendBtnClick)
 
 function sendBtnClick() {
+    if (result_shown) return;
     if (!search_mode) {
+        if (round == 5) {
+            showResult();
+            return;
+        }
         document.getElementById('btn').innerHTML = "ABSCHICKEN"
         search_mode = true;
         guessed = false;
         document.getElementById('marker-1').style.visibility = "hidden";
         document.getElementById('marker-2').style.visibility = "hidden";
         nextCity();
+        round ++;
+        document.getElementById('round').innerHTML = round + "/5";
         return;
     }
 
     if (!guessed) return
+
     search_mode = false;
-    document.getElementById('btn').innerHTML = "NÄCHSTE STADT"
     setResultMarker(latitude,longitude)
-    // TODO: calculate distance
-    // TODO: update view with stats
-    // TODO:
+
+    if (round == 5) {
+        document.getElementById('btn').innerHTML = "ERGEBNIS ZEIGEN"
+    } else { 
+        document.getElementById('btn').innerHTML = "NÄCHSTE STADT"
+    }
+    km_off += getDistance();
 }
 
 
@@ -112,4 +124,21 @@ function getDistance() {
     let deltaY = Math.abs(clickY-getYCoordinate(latitude))
     var distance = Math.sqrt(deltaX*deltaX+deltaY*deltaY);
     return distance * 111.111/(93.37*getScaleRatio());
+}
+
+
+function showResult() {
+    result_shown = true;
+    if (km_off < 150) fillStar('star5');
+    if (km_off < 350) fillStar('star4');
+    if (km_off < 550) fillStar('star3');
+    if (km_off < 650) fillStar('star2');
+    if (km_off < 950) fillStar('star1');
+        
+    document.getElementById('result-popup').style.visibility = "visible";
+
+}
+
+function fillStar(id) {
+    document.getElementById(id).style.backgroundImage = "url(german_cities/star_filled.png)"
 }
