@@ -6,29 +6,58 @@ var city_name = "Münster"
 var longitude = 51961563;
 var latitude = 7628202;
 
-var round = 0;
+var clickX = 0;
+var clickY = 0;
+
+var round = 1;
 var km_off = 0;
 
+var search_mode = true;
+var guessed = true;
 
 document.addEventListener('DOMContentLoaded', function() {
     nextCity();
 }, false);
 
 function imageClick(event) {
-    
+    if (!search_mode) return
+    guessed = true;
     let element = document.getElementById('click-box');
-    var x = event.clientX - element.offsetLeft;
-    var y = event.clientY - element.offsetTop;
-    //alert(x+', '+y)
+    clickX = event.clientX - element.offsetLeft;
+    clickY = event.clientY - element.offsetTop;
+    
     let marker = document.getElementById('marker-1');
     marker.style.visibility = "visible"
-    marker.style.top = y-5 + "px";
-    marker.style.left = x-5 + "px";
+    marker.style.top = clickY-5 + "px";
+    marker.style.left = clickX-5 + "px";
 
-    setResultMarker(latitude,longitude)
+    getDistance();
+    
 }
 
 document.querySelector('#click-box').addEventListener('click', imageClick)
+document.querySelector('#btn').addEventListener('click', sendBtnClick)
+
+function sendBtnClick() {
+    if (!search_mode) {
+        document.getElementById('btn').innerHTML = "ABSCHICKEN"
+        search_mode = true;
+        guessed = false;
+        document.getElementById('marker-1').style.visibility = "hidden";
+        document.getElementById('marker-2').style.visibility = "hidden";
+        nextCity();
+        return;
+    }
+
+    if (!guessed) return
+    search_mode = false;
+    document.getElementById('btn').innerHTML = "NÄCHSTE STADT"
+    setResultMarker(latitude,longitude)
+    // TODO: calculate distance
+    // TODO: update view with stats
+    // TODO:
+}
+
 
 function nextCity() {
     let values = getNextCity();
@@ -37,9 +66,6 @@ function nextCity() {
     longitude = parseInt(values[2]);
 
     document.getElementById('city-name').innerHTML = city_name;
-    console.log(longitude)
-    console.log(latitude)
-    setResultMarker(latitude,longitude)
 }
 
 function setResultMarker(latitude, longitude) {
@@ -79,4 +105,11 @@ function getScaleRatio() {
     } 
     // takes height for image
     return height / 812.0;
+}
+
+function getDistance() {
+    let deltaX = Math.abs(clickX-getXCoordinate(latitude, longitude))
+    let deltaY = Math.abs(clickY-getYCoordinate(latitude))
+    var distance = Math.sqrt(deltaX*deltaX+deltaY*deltaY);
+    return distance * 111.111/(93.37*getScaleRatio());
 }
