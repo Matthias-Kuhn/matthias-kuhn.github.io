@@ -6,6 +6,8 @@ var city_name = "Münster"
 var longitude = 51961563;
 var latitude = 7628202;
 
+var last_cities = [];
+
 var clickX = 0;
 var clickY = 0;
 
@@ -73,7 +75,12 @@ function sendBtnClick() {
 
 function nextCity() {
     let values = getNextCity();
+    while (last_cities.includes(values[0])) {
+        values = getNextCity();
+    }
+
     city_name = values[0];
+    last_cities.push(city_name);
     latitude = parseInt(values[1]);
     longitude = parseInt(values[2]);
 
