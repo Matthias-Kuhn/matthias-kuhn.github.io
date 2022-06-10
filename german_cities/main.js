@@ -144,7 +144,7 @@ function showResult() {
 
     setResultMessage();
 
-    document.getElementById('btn').innerHTML = "NOCHEINMAL SPIELEN"
+    document.getElementById('btn').innerHTML = "ERNEUT SPIELEN"
     document.getElementById('result-popup').style.visibility = "visible";
 
 }
