@@ -42,7 +42,7 @@ document.querySelector('#click-box').addEventListener('click', imageClick)
 document.querySelector('#btn').addEventListener('click', sendBtnClick)
 
 function sendBtnClick() {
-    if (result_shown) return;
+    if (result_shown) document.location.reload();
     if (!search_mode) {
         if (round == 5) {
             showResult();
@@ -141,11 +141,27 @@ function showResult() {
     if (km_off < 550) fillStar('star3');
     if (km_off < 650) fillStar('star2');
     if (km_off < 950) fillStar('star1');
-        
+
+    setResultMessage();
+
+    document.getElementById('btn').innerHTML = "NOCHEINMAL SPIELEN"
     document.getElementById('result-popup').style.visibility = "visible";
 
 }
 
 function fillStar(id) {
     document.getElementById(id).style.backgroundImage = "url(german_cities/star_filled.png)"
+}
+
+function setResultMessage() {
+    var result_text = "("+parseInt(km_off)+"km) "
+    if (km_off < 150) result_text +="Hervorragend!";
+    else if (km_off < 350) result_text +="Sehr Gut!";
+    else if (km_off < 550) result_text +="Gut";
+    else if (km_off < 650) result_text +="Naja";
+    else if (km_off < 950) result_text +="Herrje";
+    else result_text +="(╯°□°）╯︵ ┻━┻";
+
+    document.getElementById('result-msg').innerHTML = result_text
+
 }
